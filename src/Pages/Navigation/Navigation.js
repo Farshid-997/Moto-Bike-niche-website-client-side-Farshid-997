@@ -1,5 +1,5 @@
 import React from 'react';
-import { pink } from '@mui/material/colors';
+
 import SvgIcon from '@mui/material/SvgIcon';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -8,7 +8,9 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
-import { NavLink } from 'react-router-dom';
+import {  NavLink } from 'react-router-dom';
+import useAuth from '../../Hooks/useAuth';
+
 
 function HomeIcon(props) {
   return (
@@ -18,6 +20,7 @@ function HomeIcon(props) {
   );
 }
 const Navigation = () => {
+ const {user,logOut}=useAuth()
     return (
         <Box sx={{ flexGrow: 1}}>
       <AppBar position="static">
@@ -46,9 +49,21 @@ const Navigation = () => {
            <Button variant="text" color="inherit">More items</Button>
            </NavLink>
       
+         {
+           user?.email?
+           <Button onClick={logOut} color="inherit">LogOut</Button>
+           :
+           <NavLink style={{textDecoration:'none',color:'white'}} to="/login">
+           <Button color="inherit">Login</Button>
+           </NavLink>
          
+         }
+           
+          
+           
+           
+      
          
-          <Button color="inherit">Login</Button>
         </Toolbar>
       </AppBar>
     </Box>

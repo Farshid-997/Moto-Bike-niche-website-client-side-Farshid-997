@@ -1,5 +1,5 @@
 import React from 'react';
-import {  Card, CardContent, CardMedia, Grid, Typography } from '@mui/material';
+import {  Card, CardContent, CardMedia, Grid, Rating, Typography } from '@mui/material';
 import img1 from '../../Images/R.jpg'
 const Review = (props) => {
     const {Productname, rating, description } = props.review;
@@ -19,10 +19,11 @@ const Review = (props) => {
         <Typography variant="body2" color="text.secondary">
         {description}
         </Typography>
-
+       
         <Typography variant="body2" color="text.secondary">
-        {rating}
-     
+           
+        Rating:{rating} <br/>
+        <Rating name="half-rating" defaultValue={5} precision={0.5} />
         </Typography>
 
  

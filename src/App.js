@@ -8,15 +8,18 @@ import {
 import Home from './Pages/Home/Home';
 import AddProduct from './Pages/AddService/AddProduct';
 import Purchase from './Pages/Purchase/Purchase';
-
+import Register from './Pages/Register/Register'
 import MoreItems from './Pages/MoreItems/MoreItems';
-import Login from './Pages/Login/Login';
-import Register from './Pages/Register/Register';
+import Login from './Pages/Login/Login'
 import AddReview from './Pages/Review/AddReview';
+import AuthProvider from './Contexts/AuthProvider/AuthProvider';
+
 function App() {
   return (
     <div className="App">
-      <Router>
+     <AuthProvider>
+
+     <Router>
       <Switch>
          
       <Route exact path="/">
@@ -46,20 +49,21 @@ function App() {
 
 
            <Route path="/login">
-         <Login></Login>
+      <Login></Login>
           </Route>
 
           <Route path="/register">
-       <Register></Register>
+     <Register></Register>
           </Route>
-
-          
-
-         
 
 
         </Switch>
     </Router>
+
+     </AuthProvider>
+     
+     
+     
     </div>
   );
 }
