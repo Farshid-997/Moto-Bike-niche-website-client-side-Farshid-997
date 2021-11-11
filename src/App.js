@@ -13,6 +13,7 @@ import MoreItems from './Pages/MoreItems/MoreItems';
 import Login from './Pages/Login/Login'
 import AddReview from './Pages/Review/AddReview';
 import AuthProvider from './Contexts/AuthProvider/AuthProvider';
+import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -34,13 +35,13 @@ function App() {
           <AddProduct></AddProduct>
           </Route>
 
-          <Route path="/addReviews">
+          <PrivateRoute path="/addReviews">
          <AddReview></AddReview>
-          </Route>
+          </PrivateRoute>
 
-          <Route path="/purchase">
+          <PrivateRoute path="/purchase">
         <Purchase></Purchase>
-          </Route>
+          </PrivateRoute>
 
           <Route path="/moreitems">
     <MoreItems></MoreItems>

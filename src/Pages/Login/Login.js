@@ -1,6 +1,6 @@
-import { Button, Container, Grid, TextField, Typography } from '@mui/material';
+import { Alert, Button, CircularProgress, Container, Grid, TextField, Typography } from '@mui/material';
 import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink,useHistory,useLocation } from 'react-router-dom';
 
 import login from '../../Images/20944201.jpg'
 import useAuth from '../../Hooks/useAuth';
@@ -8,8 +8,9 @@ import Navigation from '../Navigation/Navigation';
 const Login = () => {
   
     const [loginData,setLoginData]=useState({})
-    const {loginUser}=useAuth()
-
+    const {user,loginUser,isLoading,authError}=useAuth()
+    const location=useLocation()
+    const history=useHistory()
     const handleOnChange=(e)=>{
         const field=e.target.name;
         const  value=e.target.value;
@@ -21,13 +22,10 @@ const Login = () => {
     const handleLoginSubmit=(e)=>{
        
       
-        loginUser(loginData.email,loginData.password)
+        loginUser(loginData.email,loginData.password,location,history)
         e.preventDefault()
 }
-
-
-
-    return (
+ return (
         <div>
 <Navigation/>
 <Container>
@@ -39,7 +37,7 @@ const Login = () => {
  Login
   </Typography>
 
- <form onSubmit={handleLoginSubmit}>
+{ !isLoading && <form onSubmit={handleLoginSubmit}>
 <TextField sx={{width:"75%",mb:3}} onChange={handleOnChange} name="email" id="standard-basic" label="Your Email" variant="standard" />
 <TextField sx={{width:"75%"}} onChange={handleOnChange} name="password" id="standard-basic" label="Password" type="password" variant="standard" />
 
@@ -52,9 +50,11 @@ const Login = () => {
 <Button sx={{width:"75%",mt:3}} type="submit" variant="text">New User?Please Register!!</Button>
 
 </NavLink>
-</form> 
+</form> }
 
-
+{isLoading && <CircularProgress/>}
+{user?.email&& <Alert severity="success">User Created Successfully!</Alert>}
+{authError && <Alert severity="error">{authError}</Alert>}
 
     </Grid>
 

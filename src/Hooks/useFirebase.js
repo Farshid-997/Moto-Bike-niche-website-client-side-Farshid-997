@@ -28,7 +28,7 @@ const registerUser=(email,password)=>{
       setIsLoading(false)
   });
 }
-const loginUser=(email,password)=>{
+const loginUser=(email,password,location,history)=>{
     setIsLoading(true)
     signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
