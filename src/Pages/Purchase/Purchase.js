@@ -6,6 +6,7 @@ import axios from 'axios';
 import Navigation from '../Navigation/Navigation'
 import './Purchase.css'
 import useAuth from '../../Hooks/useAuth'
+import { Link } from 'react-router-dom';
 const Purchase = () => {
     const { id } = useParams();
     const{user}=useAuth();
@@ -21,23 +22,37 @@ fetch(`http://localhost:5000/purchase/${id}`)
 },[])
     const onSubmit = data => {
         console.log(data)
-        axios.post('http://localhost:5000/products',data)
+        axios.post('http://localhost:5000/orders',data)
         .then(res=>{
          console.log(res) 
          if(res.data.insertedId)  {
-       alert('Product Added Successfully')
+      
           reset()
          }
         })
     }
+
+
+
     return (
     <div className="add-product">
 <Navigation></Navigation>
 <Typography variant="h2" sx={{color:'black' ,fontWeight:'bold', mb:3}}>
 
-Now Add More info to Purchase Item
+Now Add More info to Purchase Item  
+
 </Typography>
 
+<Typography variant="h5" sx={{color:'black' ,fontWeight:'bold', mb:3}}>
+
+
+UserName:{user.email && <span style={{ color: 'blue', fontWeight: 'bold' }}>Hello!!{user.displayName}</span>}
+
+</Typography>
+
+<Typography variant="h5" sx={{color:'black' ,fontWeight:'bold', mb:3}}>
+Email:{user.email && <span style={{ color: 'blue', fontWeight: 'bold' }}>  {user.email}</span>}
+</Typography>
 
 
 <Grid container spacing={2}>
@@ -49,7 +64,7 @@ Now Add More info to Purchase Item
 <h2>Price:</h2><p style={{color:'orange',fontWeight:'bold'}}>{purchase.price}</p>
 <h2><p>Description:{purchase.description} </p></h2>
 
-{user.email && <span style={{ color: 'orange', fontWeight: 'bold' }}>Hello!!{user.displayName}</span>}
+
 
       </Typography>
   
@@ -65,7 +80,10 @@ Now Add More info to Purchase Item
 <input {...register("email")} placeholder="Your Email"/>
 <input {...register("license")} placeholder="Your Bike License"/>
 <input {...register("payment")} placeholder="Your paymentMethod"/>
+
+
 <input type="submit" />
+
 </form>
 
   </Grid>

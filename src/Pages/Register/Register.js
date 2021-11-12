@@ -3,10 +3,11 @@ import React, { useState } from 'react';
 import { Alert, Button, CircularProgress, Container,  Grid, TextField, Typography } from '@mui/material';
 import login from '../../Images/20944201.jpg'
 import useAuth from '../../Hooks/useAuth';
-import { NavLink } from 'react-router-dom';
+import { NavLink,useHistory } from 'react-router-dom';
 import Navigation from '../Navigation/Navigation';
 const Register = () => {
         const [loginData,setLoginData]=useState({})
+        const history=useHistory();
         const {user,registerUser,googleSignIn,isLoading,authError}=useAuth()
         const handleOnChange=(e)=>{
             const field=e.target.name;
@@ -19,7 +20,7 @@ const Register = () => {
         const handleLoginSubmit=(e)=>{
            
           
-            registerUser(loginData.email,loginData.password)
+            registerUser(loginData.email,loginData.password,loginData.name,history)
             e.preventDefault()
     }
        return (
@@ -35,6 +36,7 @@ Register
   </Typography>
 
  {!isLoading && <form onSubmit={handleLoginSubmit}>
+ <TextField sx={{width:"75%",mb:3}} onChange={handleOnChange} name="name" id="standard-basic" label="Your Name" variant="standard" />
 <TextField sx={{width:"75%",mb:3}} onChange={handleOnChange} name="email" id="standard-basic" label="Your Email" variant="standard" />
 <TextField sx={{width:"75%"}} onChange={handleOnChange} name="password" id="standard-basic" label="Password" type="password" variant="standard" />
 

@@ -14,6 +14,8 @@ import Login from './Pages/Login/Login'
 import AddReview from './Pages/Review/AddReview';
 import AuthProvider from './Contexts/AuthProvider/AuthProvider';
 import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
+import Orders from './Pages/Orders/Orders';
+import Dashboard from './Pages/Dashboard/Dashboard';
 
 function App() {
   return (
@@ -37,6 +39,14 @@ function App() {
 
           <PrivateRoute path="/addReviews">
          <AddReview></AddReview>
+          </PrivateRoute>
+
+          <PrivateRoute path="/orders">
+        <Orders></Orders>
+          </PrivateRoute>
+
+          <PrivateRoute path="/dashboard">
+       <Dashboard></Dashboard>
           </PrivateRoute>
 
 
