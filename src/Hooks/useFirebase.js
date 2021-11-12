@@ -17,7 +17,7 @@ const registerUser=(email,password)=>{
     setIsLoading(true)
     createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
-   const user = userCredential.user;
+  
    setAuthError('')
   })
   .catch((error) => {
@@ -33,7 +33,8 @@ const loginUser=(email,password,location,history)=>{
     signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
   
-    const user = userCredential.user;
+    const destination=location?.state?.from||'/'
+    history.replace(destination)
     setAuthError('')
   
   })

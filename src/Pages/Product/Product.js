@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 const Product = (props) => {
-    const {Name, price, description, img } = props.product;
+    const {_id,Name, price, description, img } = props.product;
     return (
         <Grid item xs={4} sm={4} md={4}>
         <Card sx={{ minWidth: 275, border: 0, boxShadow: 0 }}>
@@ -23,7 +23,7 @@ const Product = (props) => {
         <Typography variant="body2" color="text.secondary">
         {price}
         </Typography>
-<Link to="/purchase">
+<Link to={`/purchase/${_id}`}>
 <Button variant="text">Purchase</Button>
 </Link>
  

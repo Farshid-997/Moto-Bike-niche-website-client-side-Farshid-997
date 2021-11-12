@@ -39,8 +39,10 @@ function App() {
          <AddReview></AddReview>
           </PrivateRoute>
 
-          <PrivateRoute path="/purchase">
-        <Purchase></Purchase>
+
+          <PrivateRoute path="/purchase/:id">
+
+<Purchase></Purchase>
           </PrivateRoute>
 
           <Route path="/moreitems">

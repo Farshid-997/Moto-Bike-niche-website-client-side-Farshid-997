@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Button, Card, CardContent, CardMedia, Grid, Typography } from '@mui/material';
 
 const Items = (props) => {
-    const {Name, price, description, img } = props.item;
+    const {_id,Name, price, description, img } = props.item;
     return (
       
   
@@ -26,7 +26,7 @@ const Items = (props) => {
         <Typography variant="body2" color="text.secondary">
         {price}
         </Typography>
-<Link to="/purchase">
+<Link to={`/purchase/${_id}`}>
 <Button variant="text">Purchase</Button>
 </Link>
  
