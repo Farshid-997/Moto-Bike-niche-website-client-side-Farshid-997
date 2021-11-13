@@ -4,7 +4,7 @@ import Order from './Order'
 import { useParams } from 'react-router';
 const Orders = () => {
   
-   // const {user}=useAuth()
+   
    const { id } = useParams();
     const [orders,setOrder]=useState([])
   

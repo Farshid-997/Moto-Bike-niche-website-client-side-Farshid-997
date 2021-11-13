@@ -20,7 +20,7 @@ const AddProduct = () => {
   }
   return(
         <div className="add-service">
-        <Navigation/>
+      
        
       <Typography variant="h2" sx={{color:'#dd49eb' ,fontWeight:'bold', mb:3}}>
 
