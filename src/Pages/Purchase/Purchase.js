@@ -6,7 +6,7 @@ import axios from 'axios';
 import Navigation from '../Navigation/Navigation'
 import './Purchase.css'
 import useAuth from '../../Hooks/useAuth'
-import { Link } from 'react-router-dom';
+
 const Purchase = () => {
     const { id } = useParams();
     const{user}=useAuth();

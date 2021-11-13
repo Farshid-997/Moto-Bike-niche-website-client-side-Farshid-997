@@ -9,10 +9,24 @@ const[isLoading,setIsLoading]=useState(true)
 const auth = getAuth();
 const googleProvider = new GoogleAuthProvider();
 
-const googleSignIn=()=>{
+const googleSignIn=(location,history)=>{
     setIsLoading(true)
-    return signInWithPopup(auth, googleProvider)
+     signInWithPopup(auth, googleProvider)
+     .then((result)=>{
+const user=result.user
+saveUser(user.email,user.displayName,'PUT')
+setAuthError('')
+     }).catch((error) => {
+  
+      setAuthError(error.message);
+      const destination=location?.state?.from||'/dashboard'
+      history.replace(destination)
+    }).finally(()=>{
+        setIsLoading(false)
+    });
 }
+
+
 const registerUser=(email,password,name,history)=>{
     setIsLoading(true)
     createUserWithEmailAndPassword(auth, email, password)
@@ -21,7 +35,7 @@ const registerUser=(email,password,name,history)=>{
    setAuthError('')
    const newUser={email,displayName:name}
    setUser(newUser)
-
+saveUser(email,name,'POST')
    updateProfile(auth.currentUser, {
     displayName: name
     
@@ -29,7 +43,7 @@ const registerUser=(email,password,name,history)=>{
     
   });
   
-   history.replace('/')
+   history.replace('/dashboard')
   })
   .catch((error) => {
   
@@ -44,7 +58,7 @@ const loginUser=(email,password,location,history)=>{
     signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
   
-    const destination=location?.state?.from||'/'
+    const destination=location?.state?.from||'/dashboard'
     history.replace(destination)
     setAuthError('')
   
@@ -81,7 +95,18 @@ const logOut=()=>{
     });
       
 }
+const saveUser=(email,displayName,method)=>{
 
+  const user={email,displayName}
+  fetch('http://localhost:5000/users',{
+    method:method,
+    headers:{
+      'content-type':'application/json'
+    },
+    body:JSON.stringify(user)
+  })
+  .then()
+}
 return{
     user,
     isLoading,

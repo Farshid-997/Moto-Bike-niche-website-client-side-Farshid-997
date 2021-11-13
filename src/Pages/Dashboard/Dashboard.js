@@ -15,17 +15,30 @@ import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import { Grid } from '@mui/material';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  
+  useRouteMatch
+} from "react-router-dom";
+import DashboardHome from './DahboardHome/DashboardHome';
 import Orders from '../Orders/Orders';
-import useAuth from '../../Hooks/useAuth';
+import Payment from './UserDashBoard/Payment/Payment';
+
+
+
+import ShowUserReview from './UserDashBoard/ShowUserReview/ShowUserReview';
+import MakeAdmin from './MakeAdmin/MakeAdmin';
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
-    const{user}=useAuth()
+  
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
+  let { path, url } = useRouteMatch();
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
@@ -34,6 +47,11 @@ function Dashboard(props) {
     <div>
       <Toolbar />
       <Divider />
+      <Link to={`${url}/orders`}>My Orders</Link><br/>
+      <Link to={`${url}/payment`}>Payment</Link><br/>
+      <Link to={`${url}/review`}>Review</Link><br/>
+      <Link to={`${url}/makeAdmin`}>Make Admin</Link><br/>
+      <Link to="/">LogOut</Link>
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
@@ -113,17 +131,31 @@ function Dashboard(props) {
         sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` } }}
       >
         <Toolbar />
+
+        <Switch>
+        <Route exact path={path}>
+         <DashboardHome></DashboardHome>
+        </Route>
+
+        <Route path={`${path}/orders`}>
+         <Orders></Orders>
+        </Route>
+
+        <Route path={`${path}/payment`}>
+       <Payment></Payment>
+        </Route>
+
+        <Route path={`${path}/review`}>
+  <ShowUserReview></ShowUserReview>
+        </Route>
+
+        <Route path={`${path}/makeAdmin`}>
+ <MakeAdmin></MakeAdmin>
+        </Route>
+
+      </Switch>
         <Typography paragraph>
-        <Grid container spacing={2}>
-  <Grid item xs={8}>
-    <Orders></Orders>
-  </Grid>
-  <Grid item xs={4}>
-   
-  </Grid>
-  
-  
-</Grid>
+      
         </Typography>
         <Typography paragraph>
         
@@ -134,10 +166,7 @@ function Dashboard(props) {
 }
 
 Dashboard.propTypes = {
-  /**
-   * Injected by the documentation to work in an iframe.
-   * You won't need it on your project.
-   */
+ 
   window: PropTypes.func,
 };
 
