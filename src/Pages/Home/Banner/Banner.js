@@ -27,12 +27,12 @@ const Banner = () => {
   
          <Box>
   
-         <Typography varirant="h3" style={{color:'white'}}>
-  Bike Sells <br/>
+         <Typography varirant="h1" style={{color:'white'}}>
+  Bike Sells 
   Starts Here
           </Typography>
   
-          <Typography varirant="h6" style={{fontSize:14,fontWeight:300,color:'white'}}>
+          <Typography varirant="h1" style={{fontSize:14,fontWeight:300,color:'white'}}>
  We Have Some amazing bike Collections
           </Typography>
   
@@ -40,11 +40,11 @@ const Banner = () => {
          </Box>
   
           </Grid>
-  
+{/*   
           <Grid item xs={12} sm={8} md={7} style={verticalAlign}>
        <img style={{width:'350px'}} src={rider} alt="" /> 
           </Grid>
-       
+        */}
          
         </Grid>
       </Container>  

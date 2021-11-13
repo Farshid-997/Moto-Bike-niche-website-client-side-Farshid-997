@@ -31,12 +31,18 @@ import Payment from './UserDashBoard/Payment/Payment';
 
 import ShowUserReview from './UserDashBoard/ShowUserReview/ShowUserReview';
 import MakeAdmin from './MakeAdmin/MakeAdmin';
+import useAuth from '../../Hooks/useAuth';
+import ManageAllOrders from './ManageAllOrders/ManageAllOrders';
+import AddProduct from '../AddService/AddProduct';
+import ManageProduct from './ManageProduct/ManageProduct';
+import { Button } from '@mui/material';
 
 const drawerWidth = 240;
 
 function Dashboard(props) {
   
   const { window } = props;
+  const{admin,logOut,user}=useAuth()
   const [mobileOpen, setMobileOpen] = React.useState(false);
   let { path, url } = useRouteMatch();
   const handleDrawerToggle = () => {
@@ -47,11 +53,29 @@ function Dashboard(props) {
     <div>
       <Toolbar />
       <Divider />
-      <Link to={`${url}/orders`}>My Orders</Link><br/>
+      {
+        user?.email&& <Box>
+
+<Link to={`${url}/orders`}>My Orders</Link><br/>
       <Link to={`${url}/payment`}>Payment</Link><br/>
       <Link to={`${url}/review`}>Review</Link><br/>
-      <Link to={`${url}/makeAdmin`}>Make Admin</Link><br/>
-      <Link to="/">LogOut</Link>
+        </Box>
+      }
+     
+      
+      {
+        admin&& <Box>
+  <Link to={`${url}/manageallorders`}>Manage All Orders</Link><br/>
+
+  <Link to={`${url}/addproduct`}>Add A Product</Link><br/>
+  <Link to={`${url}/makeAdmin`}>Make Admin</Link><br/>
+  <Link to={`${url}/manageProduct`}>Maanage Product</Link><br/>
+  <Button variant="text" onClick={logOut} color="inherit">LogOut</Button>
+
+        </Box>
+      }
+    
+    
       <List>
         {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
           <ListItem button key={text}>
@@ -151,6 +175,18 @@ function Dashboard(props) {
 
         <Route path={`${path}/makeAdmin`}>
  <MakeAdmin></MakeAdmin>
+        </Route>
+
+        <Route path={`${path}/manageallorders`}>
+ <ManageAllOrders></ManageAllOrders>
+        </Route>
+
+        <Route path={`${path}/addproduct`}>
+ <AddProduct></AddProduct>
+        </Route>
+
+        <Route path={`${path}/manageProduct`}>
+<ManageProduct></ManageProduct>
         </Route>
 
       </Switch>

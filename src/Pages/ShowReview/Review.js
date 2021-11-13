@@ -19,14 +19,29 @@ const Review = (props) => {
         <Typography variant="body2" color="text.secondary">
         {description}
         </Typography>
-       
-        <Typography variant="body2" color="text.secondary">
+       {
+           rating==='4' &&
+           <Typography variant="body2" color="text.secondary">
            
-        Rating:{rating} <br/>
-        <Rating name="half-rating" defaultValue={5} precision={0.5} />
-        </Typography>
+           Rating:{rating} <br/>
+           <Rating name="half-rating-read" defaultValue={2.5} precision={4} readOnly />
+           </Typography>
+   
+    
+       }
 
- 
+{
+           rating==='5' &&
+           <Typography variant="body2" color="text.secondary">
+           
+           Rating:{rating} <br/>
+           <Rating name="half-rating-read" defaultValue={2.5} precision={5} readOnly />
+           </Typography>
+   
+    
+       }
+       
+       
         </CardContent>
         </Card>
         </Grid>
