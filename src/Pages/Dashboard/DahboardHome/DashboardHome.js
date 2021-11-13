@@ -1,12 +1,13 @@
 import { Grid } from '@mui/material';
 import React from 'react';
-import Orders from '../../Orders/Orders';
+import Order from '../../Orders/Order';
+
 
 const DashboardHome = () => {
     return (
         <Grid container spacing={2}>
   <Grid item xs={8}>
-   <Orders></Orders>
+ <Order></Order>
   </Grid>
   <Grid item xs={4}>
    

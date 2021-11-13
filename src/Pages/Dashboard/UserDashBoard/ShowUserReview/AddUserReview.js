@@ -3,7 +3,7 @@ import axios from 'axios';
 import React from 'react';
 import { useForm } from "react-hook-form";
 import Navigation from '../Navigation/Navigation';
-const AddReview = () => {
+const AddUserReview = () => {
     const { register, handleSubmit,reset } = useForm();
     const onSubmit = data => {
         console.log(data)
@@ -19,7 +19,7 @@ const AddReview = () => {
     return (
    
              <div className="add-service">
-       
+        <Navigation/>
        
       <Typography variant="h2" sx={{color:'#dd49eb' ,fontWeight:'bold', mb:3}}>
 
@@ -38,4 +38,4 @@ const AddReview = () => {
     );
 };
 
-export default AddReview;
+export default AddUserReview;

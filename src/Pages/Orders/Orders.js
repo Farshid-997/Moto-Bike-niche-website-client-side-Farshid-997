@@ -1,12 +1,12 @@
-// import { Button } from '@mui/material';
-import React,{useState,useEffect} from 'react';
 
+import React,{useState,useEffect} from 'react';
+import Order from './Order'
 import { useParams } from 'react-router';
 const Orders = () => {
   
    // const {user}=useAuth()
    const { id } = useParams();
-    const [order,setOrder]=useState([])
+    const [orders,setOrder]=useState([])
   
     useEffect(()=>{
         fetch(`http://localhost:5000/orders/${id}`)
@@ -18,8 +18,11 @@ const Orders = () => {
     
     return (
         <div>
-           <h2>This is My order-{order.name}</h2>
-       
+          {
+              orders.map(order=><Order
+                order={order}
+                ></Order>)
+              }       
         </div>
     );
 };

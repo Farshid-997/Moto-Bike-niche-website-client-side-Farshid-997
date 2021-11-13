@@ -24,18 +24,23 @@ import {
   useRouteMatch
 } from "react-router-dom";
 import DashboardHome from './DahboardHome/DashboardHome';
-import Orders from '../Orders/Orders';
+
 import Payment from './UserDashBoard/Payment/Payment';
 
 
 
-import ShowUserReview from './UserDashBoard/ShowUserReview/ShowUserReview';
+
 import MakeAdmin from './MakeAdmin/MakeAdmin';
 import useAuth from '../../Hooks/useAuth';
 import ManageAllOrders from './ManageAllOrders/ManageAllOrders';
 import AddProduct from '../AddService/AddProduct';
 import ManageProduct from './ManageProduct/ManageProduct';
 import { Button } from '@mui/material';
+import Order from '../Orders/Order';
+
+import AddReview from '../Review/AddReview';
+
+
 
 const drawerWidth = 240;
 
@@ -162,7 +167,7 @@ function Dashboard(props) {
         </Route>
 
         <Route path={`${path}/orders`}>
-         <Orders></Orders>
+        <Order></Order>
         </Route>
 
         <Route path={`${path}/payment`}>
@@ -170,7 +175,7 @@ function Dashboard(props) {
         </Route>
 
         <Route path={`${path}/review`}>
-  <ShowUserReview></ShowUserReview>
+ <AddReview></AddReview>
         </Route>
 
         <Route path={`${path}/makeAdmin`}>
@@ -188,6 +193,9 @@ function Dashboard(props) {
         <Route path={`${path}/manageProduct`}>
 <ManageProduct></ManageProduct>
         </Route>
+
+        
+
 
       </Switch>
         <Typography paragraph>
