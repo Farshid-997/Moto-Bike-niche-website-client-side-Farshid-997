@@ -9,10 +9,10 @@ const Orders = () => {
     const [orders,setOrder]=useState([])
   
     useEffect(()=>{
-        fetch(`http://localhost:5000/orders/${id}`)
+        fetch(`https://whispering-reaches-15344.herokuapp.com/orders/${id}`)
         .then(res=>res.json())
         .then(data=>setOrder(data))
-    },[])
+    },[id])
 
 
     

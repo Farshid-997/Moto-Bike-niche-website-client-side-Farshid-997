@@ -31,15 +31,15 @@ const Navigation = () => {
     navIcon:{
       [theme.breakpoints.up('sm')]:{
       display:'none'
-      },
+      }
       
     
   }
   })
  const {user,logOut}=useAuth()
- const {navItem,navIcon}=useStyle()
+ const {navIcon}=useStyle()
     return (
-        <Box sx={{ flexGrow: 1}}>
+        <Box  sx={{ flexGrow: 1}}>
       <AppBar position="static">
         <Toolbar>
           <IconButton
@@ -49,6 +49,7 @@ const Navigation = () => {
             aria-label="menu"
             sx={{ mr: 2 }}
             className={navIcon}
+           
           >
             <MenuIcon />
           </IconButton>

@@ -10,7 +10,7 @@ import Navigation from '../Navigation/Navigation';
 const MoreItems = () => {
     const[items,setItems]=useState([])
     useEffect(()=>{
-        fetch('http://localhost:5000/products')
+        fetch('https://whispering-reaches-15344.herokuapp.com/products')
         .then(res=>res.json())
         .then(data=>setItems(data))
     },[])

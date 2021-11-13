@@ -15,14 +15,14 @@ const Purchase = () => {
  
 useEffect(()=>{
 
-fetch(`http://localhost:5000/purchase/${id}`)
+fetch(`https://whispering-reaches-15344.herokuapp.com/purchase/${id}`)
 .then(res=>res.json())
 .then(data=>setPurchase(data))
 
-},[])
+},[id])
     const onSubmit = data => {
         console.log(data)
-        axios.post('http://localhost:5000/orders',data)
+        axios.post('https://whispering-reaches-15344.herokuapp.com/orders',data)
         .then(res=>{
          console.log(res) 
          if(res.data.insertedId)  {

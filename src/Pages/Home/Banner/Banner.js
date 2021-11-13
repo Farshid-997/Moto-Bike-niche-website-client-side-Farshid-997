@@ -2,7 +2,7 @@ import React from 'react';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
 import bike from '../../../Images/wp3647905-black-bike-wallpapers.jpg'
-import rider from '../../../Images/biking-motorcycle-forest.jpg'
+
 import { Button, Container, Typography } from '@mui/material';
 
 

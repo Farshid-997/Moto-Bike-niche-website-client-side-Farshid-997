@@ -7,7 +7,7 @@ const AddUserReview = () => {
     const { register, handleSubmit,reset } = useForm();
     const onSubmit = data => {
         console.log(data)
-        axios.post('http://localhost:5000/reviews',data)
+        axios.post('https://whispering-reaches-15344.herokuapp.com/reviews',data)
         .then(res=>{
          console.log(res) 
          if(res.data.insertedId)  {

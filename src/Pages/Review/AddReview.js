@@ -2,12 +2,12 @@ import {  Typography } from '@mui/material';
 import axios from 'axios';
 import React from 'react';
 import { useForm } from "react-hook-form";
-import Navigation from '../Navigation/Navigation';
+
 const AddReview = () => {
     const { register, handleSubmit,reset } = useForm();
     const onSubmit = data => {
         console.log(data)
-        axios.post('http://localhost:5000/reviews',data)
+        axios.post('https://whispering-reaches-15344.herokuapp.com/reviews',data)
         .then(res=>{
          console.log(res) 
          if(res.data.insertedId)  {
